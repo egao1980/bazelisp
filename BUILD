@@ -127,3 +127,9 @@ bool_flag(
     build_setting_default = False,
     visibility = ["//visibility:public"],
 )
+
+alias(
+    name = "ros",
+    actual = "@roswell//:roswell",
+    visibility = ["//visibility:public"],
+)

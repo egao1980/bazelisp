@@ -6,7 +6,9 @@
 
 load("@bazel_skylib//:workspace.bzl", "bazel_skylib_workspace")
 load("@io_bazel_stardoc//:setup.bzl", "stardoc_repositories")
+load("@rules_foreign_cc//foreign_cc:repositories.bzl", "rules_foreign_cc_dependencies")
 
 def bazelisp_setup():
     bazel_skylib_workspace()
     stardoc_repositories()
+    rules_foreign_cc_dependencies()

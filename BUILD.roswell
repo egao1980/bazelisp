@@ -1,0 +1,19 @@
+package(default_visibility = ["//visibility:public"])
+
+load("@rules_foreign_cc//foreign_cc:defs.bzl", "configure_make")
+
+
+filegroup(
+    name = "all",
+    srcs = glob(["**"]),
+    visibility = ["@roswell//:__pkg__"],
+)
+
+configure_make(
+    name = "roswell",
+    autogen = True,
+    autogen_command = "bootstrap",
+    configure_in_place = True,
+    lib_source = "//:all",
+    out_binaries = ["ros"]
+)

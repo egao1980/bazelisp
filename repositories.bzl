@@ -9,6 +9,11 @@ load(
     "git_repository",
     "new_git_repository",
 )
+load(
+    "@bazel_tools//tools/build_defs/repo:http.bzl",
+    "http_archive"
+)
+
 
 def _include_if_not_defined(repo_rule, name, **kwargs):
     if not native.existing_rule(name):
@@ -62,3 +67,24 @@ def bazelisp_repositories():
         shallow_since = "1606649057 +0000",
         build_file = "//:BUILD.sbcl",
     )
+
+    _include_if_not_defined(
+        http_archive,
+        name = "rules_foreign_cc",
+        sha256 = "6041f1374ff32ba711564374ad8e007aef77f71561a7ce784123b9b4b88614fc",
+        strip_prefix = "rules_foreign_cc-0.8.0",
+        url = "https://github.com/bazelbuild/rules_foreign_cc/archive/0.8.0.tar.gz",
+    )
+
+    _include_if_not_defined(
+        new_git_repository,
+        name = "roswell",
+        remote = "https://github.com/roswell/roswell.git",
+        # tag = "v21.10.14.111",
+        commit = "5be94a34eb2f3214aa7afca7f8fe7a16c67b9fb7",
+        shallow_since = "1655730796 +0000",
+        build_file = "//:BUILD.roswell"
+    )
+
+
+
